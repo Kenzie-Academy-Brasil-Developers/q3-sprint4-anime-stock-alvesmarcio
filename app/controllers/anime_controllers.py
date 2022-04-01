@@ -37,14 +37,10 @@ def get_animes() -> dict:
     Returns:
         _type_: anime object
     """
-    try:
-        animes = Anime.get_animes()
-        result = [Anime.serialize(anime) for anime in animes]
-        
-        return jsonify({"data": [result]}), HTTPStatus.OK
-    except:
-        
-        return jsonify({"data": []}), HTTPStatus.OK
+    animes = Anime.get_animes()
+    result = [Anime.serialize(anime) for anime in animes]
+    
+    return jsonify({"data": result}), HTTPStatus.OK
     
     
 def get_anime(anime_id: int) -> dict:
